@@ -9,7 +9,7 @@ import {
   Put,
 } from '@nestjs/common';
 import { ItemsService } from './items.service';
-import { Item } from './items.mode';
+import { Item } from '@prisma/client';
 import { CreateItemDto } from './dto/create-item.dto';
 
 @Controller('items')
@@ -25,8 +25,8 @@ export class ItemsController {
     return this.itemsService.findById(id);
   }
   @Post()
-  create(@Body() createItemDto: CreateItemDto): Item {
-    return this.itemsService.create(createItemDto);
+  async create(@Body() createItemDto: CreateItemDto): Promise<Item> {
+    return await this.itemsService.create(createItemDto);
   }
 
   @Put(':id')
