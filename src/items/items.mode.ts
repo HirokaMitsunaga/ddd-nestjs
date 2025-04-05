@@ -1,7 +1,7 @@
-export interface Items {
+export interface Item {
   id: string;
   name: string;
   price: number;
-  descripsion?: string;
+  description?: string;
   status: 'ON_SALE' | 'SOLD_OUT';
 }
