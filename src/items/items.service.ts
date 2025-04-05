@@ -5,8 +5,8 @@ import { Item } from './items.mode';
 export class ItemsService {
   private items: Item[] = [];
   @Get()
-  findAll() {
-    return 'this is items service';
+  findAll(): Item[] {
+    return this.items;
   }
   create(item: Item): Item {
     this.items.push(item);
