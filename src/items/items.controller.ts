@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { ItemsService } from './items.service';
 import { Item } from './items.mode';
 
@@ -8,6 +8,11 @@ export class ItemsController {
   @Get()
   findAll(): Item[] {
     return this.itemsService.findAll();
+  }
+
+  @Get(':id')
+  findById(@Param('id') id: string): Item {
+    return this.itemsService.findById(id);
   }
   @Post()
   create(
