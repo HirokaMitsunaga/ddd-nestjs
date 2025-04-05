@@ -4,6 +4,7 @@ import {
   Delete,
   Get,
   Param,
+  ParseUUIDPipe,
   Post,
   Put,
 } from '@nestjs/common';
@@ -20,7 +21,7 @@ export class ItemsController {
   }
 
   @Get(':id')
-  findById(@Param('id') id: string): Item {
+  findById(@Param('id', ParseUUIDPipe) id: string): Item {
     return this.itemsService.findById(id);
   }
   @Post()
@@ -29,12 +30,12 @@ export class ItemsController {
   }
 
   @Put(':id')
-  updateStatus(@Param('id') id: string) {
+  updateStatus(@Param('id', ParseUUIDPipe) id: string) {
     return this.itemsService.updateStatus(id);
   }
 
   @Delete(':id')
-  delete(@Param('id') id: string) {
+  delete(@Param('id', ParseUUIDPipe) id: string) {
     return this.itemsService.delete(id);
   }
 }
