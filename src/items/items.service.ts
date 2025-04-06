@@ -45,10 +45,11 @@ export class ItemsService {
       },
     });
   }
-  async delete(id: string) {
+  async delete(id: string, userId: string) {
     return await this.prismaService.item.delete({
       where: {
         id: id,
+        userId: userId,
       },
     });
   }
