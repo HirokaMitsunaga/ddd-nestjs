@@ -35,6 +35,12 @@ describe('ItemsService', () => {
       const result = await itemsService.findAll();
       expect(result).toEqual(expected);
     });
+    it('異常系:商品が存在しない', async () => {
+      prismaService.item.findMany.mockResolvedValue(null);
+      await expect(itemsService.findAll()).rejects.toThrow(
+        new NotFoundException(),
+      );
+    });
   });
 
   describe('findById', () => {
